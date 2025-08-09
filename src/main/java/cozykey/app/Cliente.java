@@ -3,13 +3,15 @@ package cozykey.app;
 public class Cliente {
     private int id;
     private String nombre;
+    private String DNI;
     private String email;
     private String telefono;
     private String direccion;
 
-    public Cliente(int id, String nombre, String email, String telefono, String direccion){
+    public Cliente(int id, String nombre, String DNI, String email, String telefono, String direccion){
         this.id = id;
         this.nombre = nombre;
+        this.DNI = DNI;
         this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -20,6 +22,9 @@ public class Cliente {
     }
     public String getNombre() {
         return nombre;
+    }
+    public String getDNI() {
+        return DNI;
     }
     public String getEmail() {
         return email;
@@ -36,6 +41,9 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
@@ -50,6 +58,7 @@ public class Cliente {
         return "Cliente{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", DNI='" + DNI + '\'' +
                 ", email='" + email + '\'' +
                 ", teléfono='" + telefono + '\'' +
                 ", dirección='" + direccion + '\'' +
