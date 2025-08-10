@@ -42,6 +42,26 @@ public class Main {
         System.out.println(C3.getDescripcion());
         System.out.println(C4.getDescripcion());
 
+        //Crear venta
+        Venta venta1 = new Venta(cliente1, "10/08/2025");
+
+        //Añadir productos
+        venta1.añadirProducto(t1);  //teclado
+        venta1.añadirProducto(C4); //keycap
+
+        //Resumen venta
+        System.out.println("\nDatos de venta:");
+        System.out.println(venta1);
+
+        //Productos comprados
+        System.out.println("\nProductos de la venta:");
+        for (Producto p : venta1.getProductos()) {
+            System.out.println("- " + p.getNombre() + " (€" + p.getPrecio() + ")");
+        }
+
+
+
+
     }
 
 }
