@@ -6,6 +6,17 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase principal de la aplicación de gestión de CozyKey.
+ * <p>
+ * Esta clase contiene el método main que inicia la ejecución del programa,
+ * incluyendo la gestión de clientes, productos y ventas.
+ * </p>
+ *
+ * @author Rebeca Sánchez
+ * @version 1.0
+ * @since 2025-08-17
+ */
 
 public class Main {
     public static void main(String[] args) {
@@ -14,44 +25,58 @@ public class Main {
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
         List<Producto> catalogoBase = new ArrayList<>();
+        /**
+         * Variable para asignar ID únicos a nuevos clientes.
+         */
         int añadirId = 1;
 
 
         System.out.println("Bienvenid@s a Cozykey!");
 
-        //Datos clientes
+        /**
+         * Creación de clientes predefinidos.
+         */
         Cliente cliente1 = new Cliente(1, "Francisco Sánchez", "11579634W", "francsamon@gmail.es", "688733622544", "C/ Parque 21, Madrid");
         Cliente cliente2 = new Cliente(2, "Julia Bautista", "46228579T", "juliabaut@gmail.es", "6644771159866", "C/ Conde 88 1ºC, Burgos");
         Cliente cliente3 = new Cliente(3, "Mustapha Ouichou", "Y50994753D", "mustapha@gmail.es", "609906606244", "Urbanización Frias 17, Torrelavega");
         Cliente cliente4 = new Cliente(4, "Miguel García", "13345579J", "miguel@gmail.es", "655000942881", "C/ Constitución nº3, Cádiz");
         Cliente cliente5 = new Cliente(5, "Rebeca Sánchez", "50067449F", "rebeca@gmail.es", "6117717554322", "C/ Guatemala 17, Talamanca");
 
-        //Añadir clientes
+        /**
+         * Registro de clientes en la lista.
+         */
         clientes.add(cliente1);
         clientes.add(cliente2);
         clientes.add(cliente3);
         clientes.add(cliente4);
         clientes.add(cliente5);
 
-        //Mostrar clientes
+        /**
+         * Muestra los clientes registrados.
+         */
         System.out.println("\nClientes registrados:");
         for (Cliente cliente : clientes) {
             System.out.println(cliente);
         }
 
-        //Productos
-        // Teclados predefinidos
+
+        /**
+         * Creación del catálogo con teclados y keycaps.
+         */
         catalogoBase.add(new Teclado("Teclado T1", 59.99, 50,"Red", true));
         catalogoBase.add(new Teclado("Teclado T2", 49.99, 100,"Blue", false));
 
-        // Keycaps predefinidas
+
         catalogoBase.add(new Keycap("Keycap C1", 12.99, 150,"XDA", "rosa"));
         catalogoBase.add(new Keycap("Keycap C2", 13.99, 120,"MOT", "azul"));
         catalogoBase.add(new Keycap("Keycap C3", 11.99, 100,"XDA", "verde"));
         catalogoBase.add(new Keycap("Keycap C4", 14.99, 62,"MOT", "rojo"));
 
 
-        //MENÚ INTERACTIVO//
+        /**
+         * Menú interactivo principal de la aplicación.
+         * Permite al usuario gestionar clientes, productos, realizar ventas y consultar historial.
+         */
 
         int opcion;
         do {
@@ -66,7 +91,12 @@ public class Main {
             sc.nextLine();
 
             switch (opcion) {
-                case 1: //Gestión clientes
+
+                /**
+                 * Opción 1: Gestión de clientes.
+                 * Permite alta, baja, modificación, búsqueda y listado de clientes.
+                 */
+                case 1:
                     int opcionCliente;
                     do {
                         System.out.println("\n--- Gestión de clientes ---");
@@ -81,7 +111,10 @@ public class Main {
                         sc.nextLine();
 
                         switch (opcionCliente) {
-                            case 1: //Alta
+                            /**
+                             * Alta de cliente: solicita datos y añade a la lista.
+                             */
+                            case 1:
                                 System.out.println("Nombre: ");
                                 String nombre = sc.nextLine();
                                 System.out.println("DNI: ");
@@ -97,7 +130,10 @@ public class Main {
                                 System.out.println("Cliente añadido correctamente. ");
                                 break;
 
-                            case 2: //Baja
+                            /**
+                             * Baja de cliente.
+                             */
+                            case 2:
                                 System.out.println("Introduce el DNI del cliente: ");
                                 String dniEliminar = sc.nextLine();
                                 boolean eliminado = clientes.removeIf(c -> c.getDNI().equalsIgnoreCase(dniEliminar));
@@ -108,7 +144,10 @@ public class Main {
                                 }
                                 break;
 
-                            case 3: //Modificar
+                            /**
+                             * Modificación de cliente.
+                             */
+                            case 3:
                                 System.out.println("Introduce el DNI del cliente: ");
                                 String dniModificar = sc.nextLine();
 
@@ -136,7 +175,10 @@ public class Main {
                                     System.out.println("Cliente no encontrado");
                                 }
 
-                            case 4: //Buscar cliente por DNI
+                                /**
+                                 * Búsqueda de cliente por DNI.
+                                 */
+                            case 4:
                                 System.out.print("Introduce el DNI: ");
                                 String dniBuscar = sc.nextLine();
                                 Cliente clienteEncontrado = null;
@@ -154,7 +196,10 @@ public class Main {
                                 }
                                 break;
 
-                            case 5: //Listado clientes
+                            /**
+                             * Listado de todos los clientes.
+                             */
+                            case 5:
 
                                 System.out.println("\nClientes dados de alta:");
                                 if (clientes.isEmpty()) {
@@ -166,6 +211,9 @@ public class Main {
                                 }
                                 break;
 
+                            /**
+                             * Volver al menú principal.
+                             */
                             case 0:
                                 System.out.println("Volviendo al menú principal...");
                                 break;
@@ -176,6 +224,10 @@ public class Main {
                     } while (opcionCliente != 0);
                     break;
 
+                /**
+                 * Opción 2 del menú principal: Gestión de productos.
+                 * Permite visualizar el catálogo, añadir productos, crear nuevos, ver y eliminar productos añadidos.
+                 */
                 case 2:
                     int opcionProducto;
                     do {
@@ -191,14 +243,21 @@ public class Main {
                         sc.nextLine();
 
                         switch (opcionProducto) {
-                            case 1: //Ver catálogo
+
+                            /**
+                             * Muestra el catálogo de productos.
+                             */
+                            case 1:
                                 System.out.println("\nCatálogo disponible:");
                                 for (int i = 0; i < catalogoBase.size(); i++) {
                                     System.out.println((i + 1) + ". " + catalogoBase.get(i).getDescripcion());
                                 }
                                 break;
 
-                            case 2: //Añadir
+                            /**
+                             * Añade un producto del catálogo (aumenta stock).
+                             */
+                            case 2:
                                 System.out.print("\nSelecciona el número del producto que deseas añadir:");
                                 for (int i = 0; i < catalogoBase.size(); i++) {
                                     System.out.println((i + 1) + ". " + catalogoBase.get(i));
@@ -216,7 +275,10 @@ public class Main {
                                 }
                                 break;
 
-                            case 3: // Crear nuevo producto
+                            /**
+                             * Permite crear un nuevo producto (Teclado o Keycap).
+                             */
+                            case 3:
                                 System.out.println("\n¿Qué tipo de producto quieres crear?");
                                 System.out.println("1. Teclado");
                                 System.out.println("2. Keycap");
@@ -265,7 +327,10 @@ public class Main {
                                 System.out.println("Producto creado y añadido correctamente.");
                                 break;
 
-                            case 4: // Ver productos añadidos
+                            /**
+                             * Muestra los productos añadidos.
+                             */
+                            case 4:
                                 System.out.println("\nProductos añadidos:");
                                 if (listaProductos.isEmpty()) {
                                     System.out.println("No hay productos añadidos.");
@@ -276,7 +341,10 @@ public class Main {
                                 }
                                 break;
 
-                            case 5: // Eliminar producto añadido
+                            /**
+                             * Permite eliminar un producto añadido.
+                             */
+                            case 5:
                                 System.out.println("\nProductos añadidos:");
                                 for (int i = 0; i < listaProductos.size(); i++) {
                                     System.out.println((i + 1) + ". " + listaProductos.get(i));
@@ -294,7 +362,10 @@ public class Main {
                                 }
                                 break;
 
-                            case 0: // Volver al menú
+                            /**
+                             * Vuelve al menú principal.
+                             */
+                            case 0:
                                 System.out.println("Volviendo al menú principal...");
                                 break;
 
@@ -306,9 +377,15 @@ public class Main {
                     } while (opcionProducto != 0);
                     break;
 
-
-                case 3: // Realizar venta
+                /**
+                 * Opción 3 del menú principal: Realizar venta.
+                 * Permite seleccionar un cliente, añadir productos y registrar ventas.
+                 */
+                case 3:
                     System.out.println("\nRealizar venta:");
+                    /**
+                     * Muestra los clientes disponibles.
+                     */
                     System.out.println("Clientes disponibles:");
                     for (Cliente c : clientes) {
                         System.out.println(c.getId() + ". " + c.getNombre());
@@ -317,6 +394,9 @@ public class Main {
                     int idCliente = sc.nextInt();
                     sc.nextLine();
 
+                    /**
+                     * Busca el cliente por ID.
+                     */
                     Cliente clienteSeleccionado = null;
                     for (Cliente c : clientes) {
                         if (c.getId() == idCliente) {
@@ -329,16 +409,25 @@ public class Main {
                         break;
                     }
 
+                    /**
+                     * Solicita la fecha de la venta y crea una nueva instancia.
+                     */
                     System.out.println("Introduce la fecha de la venta:");
                     String fechaVenta = sc.nextLine();
                     Venta nuevaVenta = new Venta(clienteSeleccionado, fechaVenta);
 
+                    /**
+                     * Muestra los productos disponibles para añadir a la venta.
+                     */
                     Producto[] productos = catalogoBase.toArray(new Producto[0]);
                     System.out.println("\nProductos disponibles:");
                     for (int i = 0; i < productos.length; i++) {
                         System.out.println((i + 1) + ". " + productos[i].getDescripcion());
                     }
 
+                    /**
+                     * Permite añadir productos a la venta.
+                     */
                     String añadir;
                     do {
                         System.out.println("Introduce el núemro del producto que desea añadir: ");
@@ -356,17 +445,27 @@ public class Main {
                         añadir = sc.nextLine().toLowerCase();
                     } while (añadir.equals("s"));
 
+                    /**
+                     * Añade la venta al historial y la muestra.
+                     */
                     ventas.add(nuevaVenta);
                     System.out.println("\nVenta añadida!.");
                     System.out.println(nuevaVenta);
                     break;
 
+                /**
+                 * Opción 4: Muestra el historial completo de las ventas.
+                 */
                 case 4:
                     System.out.println("\nHistorial de ventas:");
                     for (Venta v : ventas) {
                         System.out.println(v);
                     }
                     break;
+
+                /**
+                 * Opción 0: Finaliza el programa.
+                 */
 
                 case 0:
                     System.out.println("Gracias, hasta pronto!");
@@ -383,25 +482,7 @@ public class Main {
     }
 }
 
-/*
-        //Crear venta EJEMPLO:
 
-        Venta venta1 = new Venta(cliente1, "10/08/2025");
-
-        //Añadir productos
-        venta1.añadirProducto(t1);  //teclado
-        venta1.añadirProducto(C4); //keycap
-
-        //Resumen venta
-        System.out.println("\nDatos de venta:");
-        System.out.println(venta1);
-
-        //Productos comprados
-        System.out.println("\nProductos de la venta:");
-        for (Producto p : venta1.getProductos()) {
-            System.out.println("- " + p.getNombre() + " (€" + p.getPrecio() + ")");
-        }
- */
 
 
 
