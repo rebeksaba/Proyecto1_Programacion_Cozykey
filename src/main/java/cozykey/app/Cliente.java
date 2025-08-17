@@ -1,5 +1,14 @@
 package cozykey.app;
 
+/**
+ * Representa un cliente de CozyKey.
+ * Contiene información como nombre, DNI, email, teléfono y dirección.
+ * Cada cliente tiene un identificador único (PK).
+ *
+ * @author Rebeca
+ * @version 1.0
+ */
+
 public class Cliente {
     private static int contadorId = 1;
 
@@ -10,6 +19,10 @@ public class Cliente {
     private String telefono;
     private String direccion;
 
+    /**
+     * Constructor con ID manual.
+     */
+
     public Cliente(int id, String nombre, String DNI, String email, String telefono, String direccion) {
         this.id = id;
         this.nombre = nombre;
@@ -18,6 +31,10 @@ public class Cliente {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+
+    /**
+     * Constructor con ID automático.
+     */
 
 
     public Cliente(String nombre, String DNI, String email, String telefono, String direccion){
@@ -29,10 +46,11 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    //getters:
+    /** @return ID del cliente/getters */
     public int getId() {
         return id;
     }
+    /** @return Nombre del cliente */
     public String getNombre() {
         return nombre;
     }
@@ -49,7 +67,7 @@ public class Cliente {
         return direccion;
     }
 
-    //setters:
+    /** setters */
     public void  setId(int id) {
         this.id = id;
     }
@@ -68,6 +86,11 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    /**
+     * Representación en texto del cliente.
+     */
+
     @Override
     public String toString() {
         return "Cliente{" +

@@ -26,13 +26,18 @@ public class Main {
         Cliente cliente4 = new Cliente(4, "Miguel García", "13345579J", "miguel@gmail.es", "655000942881", "C/ Constitución nº3, Cádiz");
         Cliente cliente5 = new Cliente(5, "Rebeca Sánchez", "50067449F", "rebeca@gmail.es", "6117717554322", "C/ Guatemala 17, Talamanca");
 
+        //Añadir clientes
+        clientes.add(cliente1);
+        clientes.add(cliente2);
+        clientes.add(cliente3);
+        clientes.add(cliente4);
+        clientes.add(cliente5);
+
         //Mostrar clientes
         System.out.println("\nClientes registrados:");
-        System.out.println(cliente1);
-        System.out.println(cliente2);
-        System.out.println(cliente3);
-        System.out.println(cliente4);
-        System.out.println(cliente5);
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
 
         //Productos
         // Teclados predefinidos
@@ -189,7 +194,7 @@ public class Main {
                             case 1: //Ver catálogo
                                 System.out.println("\nCatálogo disponible:");
                                 for (int i = 0; i < catalogoBase.size(); i++) {
-                                    System.out.println((i + 1) + ". " + catalogoBase.get(i));
+                                    System.out.println((i + 1) + ". " + catalogoBase.get(i).getDescripcion());
                                 }
                                 break;
 
