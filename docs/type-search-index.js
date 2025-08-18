@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"cozykey.app","l":"Cliente"},{"p":"cozykey.app","l":"Keycap"},{"p":"cozykey.app","l":"Main"},{"p":"cozykey.app","l":"Producto"},{"p":"cozykey.app","l":"Teclado"},{"p":"cozykey.app","l":"Venta"}];updateSearchResults();
